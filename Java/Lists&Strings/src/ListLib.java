@@ -19,4 +19,18 @@ public class ListLib {
 		}
 		return max;
 	}
+	
+	public static <T> List<T> reverse(List<T> data){
+		
+		T tmp = null;
+		int size = data.size();
+		
+		for(int i = 0; i < Math.floor(size/2f); i++){
+			tmp = data.get(i);
+			data.set(i, data.get(size - (i+1)));
+			data.set(size - (i+1), tmp);
+		}
+		
+		return data;
+	}
 }

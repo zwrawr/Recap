@@ -23,5 +23,26 @@ public class ListLibTest {
 		List<String> data = Arrays.asList("a", "b", "bad", "egg", "eat");
 		assertEquals("egg", ListLib.max_of(data));
 	}
+	
+	@Test
+	public void test_reverse_odd() {
+		Integer[] arr = {0, 1, 2, 3, 4, 5, 6};
+		
+		List<Integer> data = Arrays.asList(arr);
+		
+		Integer[] res = (Integer[])ListLib.reverse(data).toArray();
 
+		assertArrayEquals(new Integer[]{6,5,4,3,2,1,0}, res);
+	}
+	
+	@Test
+	public void test_reverse_even() {
+		Integer[] arr = {0, 1, 2, 3, 4, 5};
+
+		List<Integer> data = Arrays.asList(arr);
+		
+		Integer[] res = (Integer[])ListLib.reverse(data).toArray();
+		
+		assertArrayEquals(new Integer[]{5,4,3,2,1,0}, res);
+	}
 }
