@@ -33,4 +33,15 @@ public class ListLib {
 		
 		return data;
 	}
+	
+	public static <T extends Comparable<T>> boolean contains(List<T> data, T a){
+		
+		// Should use data.contains(a); but that defeats the points of this exercise
+		for(T t : data){
+			if (a.equals(t)){
+				return true;
+			}
+		}
+		return false;
+	}
 }

@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class ListLibTest {
 
+	// Tests for ListLib.max_of
 	@Test
 	public void test_max_of_positve() {
 		List<Integer> data = Arrays.asList(0, 8, 14, 3, 4, 2);
@@ -24,6 +25,7 @@ public class ListLibTest {
 		assertEquals("egg", ListLib.max_of(data));
 	}
 	
+	// Tests for ListLib.reverse
 	@Test
 	public void test_reverse_odd() {
 		Integer[] arr = {0, 1, 2, 3, 4, 5, 6};
@@ -44,5 +46,27 @@ public class ListLibTest {
 		Integer[] res = (Integer[])ListLib.reverse(data).toArray();
 		
 		assertArrayEquals(new Integer[]{5,4,3,2,1,0}, res);
+	}
+	
+	// Tests for ListLib.contains
+	@Test
+	public void test_contains_none(){
+		List<Integer> data = Arrays.asList(-2, -1, 0, 1, 2);
+		
+		assertFalse(ListLib.contains(data,3));
+	}
+	
+	@Test
+	public void test_contains_one(){
+		List<Integer> data = Arrays.asList(-2, -1, 0, 1, 2);
+		
+		assertTrue(ListLib.contains(data,-1));
+	}
+	
+	@Test
+	public void test_contains_many(){
+		List<Integer> data = Arrays.asList(2, 1, 0, 1, 2);
+		
+		assertTrue(ListLib.contains(data,2));
 	}
 }
