@@ -69,4 +69,29 @@ public class ListLibTest {
 		
 		assertTrue(ListLib.contains(data,2));
 	}
+	
+	// Test for ListLib.oddIndices_of
+	@Test
+	public void test_oddIndices_of_odd(){
+		List<Integer> data = Arrays.asList(-2, -1, 0, 1, 2);
+		assertArrayEquals(new Integer[]{-1,1},ListLib.oddIndices_of(data).toArray());
+	}
+	
+	@Test
+	public void test_oddIndices_of_even(){
+		List<Integer> data = Arrays.asList(-2, -1, 0, 1, 2, 3);
+		assertArrayEquals(new Integer[]{-1,1,3},ListLib.oddIndices_of(data).toArray());
+	}
+	
+	@Test
+	public void test_evenIndices_of_odd(){
+		List<Integer> data = Arrays.asList(-2, -1, 0, 1, 2);
+		assertArrayEquals(new Integer[]{-2,0,2},ListLib.evenIndices_of(data).toArray());
+	}
+	
+	@Test
+	public void test_evenIndices_of_even(){
+		List<Integer> data = Arrays.asList(-2, -1, 0, 1, 2, 3);
+		assertArrayEquals(new Integer[]{-2,0,2},ListLib.evenIndices_of(data).toArray());
+	}
 }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListLib {
@@ -44,4 +45,25 @@ public class ListLib {
 		}
 		return false;
 	}
+	
+	public static <T> List<T> oddIndices_of(List<T> data){
+		List<T> odds = new ArrayList<T>();
+		
+		for(int i = 1; i < data.size(); i+=2){
+			odds.add(data.get(i));
+		}
+		
+		return odds;
+	}
+	
+	public static <T> List<T> evenIndices_of(List<T> data){
+		List<T> even = new ArrayList<T>();
+		
+		for(int i = 0; i < data.size(); i+=2){
+			even.add(data.get(i));
+		}
+		
+		return even;
+	}
+	
 }
