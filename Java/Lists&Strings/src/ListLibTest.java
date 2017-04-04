@@ -2,6 +2,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -136,6 +137,8 @@ public class ListLibTest {
 		assertEquals(sum,ListLib.sum_r(data));
 	}
 	
+	//Test on all
+	// TODO: better testing of this function
 	@Test
 	public void test_on_all(){
 		List<Integer> data = new ArrayList<Integer>();
@@ -144,5 +147,41 @@ public class ListLibTest {
 		
 		Consumer<Integer> consumer = x -> System.out.println(x);
 		ListLib.on_all(data, consumer);
+	}
+	
+	//Test concat
+	@Test
+	public void test_concat(){
+		List<Integer> a = Arrays.asList(-3,-2,-1, 0);
+		List<Integer> b = Arrays.asList( 1, 2, 3);
+		
+		assertArrayEquals(new Integer[]{-3,-2,-1, 0, 1, 2, 3}, ListLib.concat(a,b).toArray());
+	}
+	
+	//Test combine
+	@Test
+	public void test_combine(){
+		List<Integer> a = Arrays.asList(-3,-2,-1, 0);
+		List<Integer> b = Arrays.asList( 3, 2, 1);
+		
+		assertArrayEquals(new Integer[]{-3, 3,-2, 2,-1, 1, 0}, ListLib.combine(a,b).toArray());
+	}
+	
+	//Test merge
+	@Test
+	public void test_merge(){
+		List<Integer> a = Arrays.asList(-3,-1, 2);
+		List<Integer> b = Arrays.asList(-2, 0, 1, 3);
+		
+		assertArrayEquals(new Integer[]{-3,-2,-1, 0, 1, 2, 3}, ListLib.merge(a,b).toArray());
+	}
+	
+	// Test rotate
+	@Test
+	public void test_rotate(){
+		// asList returns an structurally unmodifiable list so . . . this has be ugly.
+		List<Integer> data = new LinkedList<Integer>(Arrays.asList(7, 8, 0, 1, 2, 3, 5, 6));
+		
+		assertArrayEquals(new Integer[]{0, 1, 2, 3, 5, 6, 7, 8}, ListLib.rotate(data,2).toArray());
 	}
 }

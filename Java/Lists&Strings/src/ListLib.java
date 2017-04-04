@@ -130,4 +130,91 @@ public class ListLib {
 			f.accept(t);
 		}
 	}
+	
+	// concatenates two lists, [a,b,c], [1,2,3] → [a,b,c,1,2,3]
+	public static <T> List<T> concat(List<T> a, List<T> b){
+		List<T> data = new ArrayList<T>(a);
+		
+		data.addAll(b);
+		
+		return data;
+	} 
+	
+	// combines two lists by alternately taking elements, e.g. [a,b,c], [1,2,3] → [a,1,b,2,c,3].
+	public static <T> List<T> combine(List<T> a, List<T> b){
+		List<T> data = new ArrayList<T>();
+		
+		int aCount = 0;
+		int bCount = 0;
+		
+		while(aCount < a.size() || bCount < b.size()){
+			if(aCount < a.size()){
+				data.add(a.get(aCount++));
+			}
+			if(bCount < b.size()){
+				data.add(b.get(bCount++));
+			}
+		}
+		
+		return data;
+	} 
+	
+	// merges two sorted lists into a new sorted list. [1,4,6],[2,3,5] → [1,2,3,4,5,6]
+	public static <T extends Comparable<T>> List<T> merge(List<T> a, List<T> b){
+		List<T> data = new ArrayList<T>();
+		
+		int aCount = 0;
+		int bCount = 0;
+		
+		while(aCount < a.size() && bCount < b.size()){
+			
+			T aValue = a.get(aCount);
+			T bValue = b.get(bCount);
+
+			if(aValue.compareTo(bValue) < 0){
+				data.add(a.get(aCount++));
+			}
+			else{
+				data.add(b.get(bCount++));
+			}
+		}
+		
+		// if there were more items in a than b
+		if (aCount < a.size()){
+			data.addAll(a.subList(aCount, a.size()));
+		}
+		
+		// if there were more items in b than a
+		if (bCount < b.size()){
+			data.addAll(b.subList(bCount, b.size()));
+		}
+		
+		return data;
+	}
+	
+	// rotate a list by k elements
+	public static <T> List<T> rotate(List<T> data, int k){
+		
+		// rotating by a multiple of k is the same as doing nothing
+		k = k % data.size(); 
+		if (k == 0){ return data;}
+		
+		/* I would use an array here to store tmp, but java's generics don't know
+		 * their class at runtime so there isn't a 'proper' way to create generic arrays
+		 * T tmp[] = new T[k];
+		*/
+		
+		// grab a temp copy of the first k items
+		List<T> tmp = new ArrayList<T>(data.subList(0, k));
+		
+		// remove k items from the beginning
+		for(int i = 0; i < k; i++){
+			data.remove(0);
+		}
+		
+		// add the first k items to the end of the list 
+		data.addAll(tmp);
+		
+		return data;
+	}
 }
