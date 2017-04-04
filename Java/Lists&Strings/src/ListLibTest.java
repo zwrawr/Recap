@@ -1,7 +1,10 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
+
 import org.junit.Test;
 
 public class ListLibTest {
@@ -106,5 +109,40 @@ public class ListLibTest {
 	public void test_isPalindrome_false(){
 		List<Character> data = Arrays.asList('a','v','a','c','a','r','d','o');
 		assertFalse(ListLib.isPalindrome(data));
+	}
+	
+	// Test for sum
+	@Test
+	public void test_sum_f(){
+		List<Integer> data = Arrays.asList(-2, -1, 0, 1, 2, 3, 5, 6);
+		Integer sum = 14;
+		
+		assertEquals(sum,ListLib.sum_f(data));
+	}
+	
+	@Test
+	public void test_sum_fe(){
+		List<Integer> data = Arrays.asList(-2, -1, 0, 1, 2, 3, 5, 6);
+		Integer sum = 14;
+		
+		assertEquals(sum,ListLib.sum_fe(data));
+	}
+	
+	@Test
+	public void test_sum_r(){
+		List<Integer> data = Arrays.asList(-2, -1, 0, 1, 2, 3, 5, 6);
+		Integer sum = 14;
+		
+		assertEquals(sum,ListLib.sum_r(data));
+	}
+	
+	@Test
+	public void test_on_all(){
+		List<Integer> data = new ArrayList<Integer>();
+		
+		for (int i = 0; i < 20; i++){data.add(i*i);}
+		
+		Consumer<Integer> consumer = x -> System.out.println(x);
+		ListLib.on_all(data, consumer);
 	}
 }

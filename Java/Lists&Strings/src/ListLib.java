@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ListLib {
 	
@@ -87,4 +88,46 @@ public class ListLib {
 		return true;
 	}
 	
+	//Sum up the values in a list
+	public static Integer sum_f(List<Integer> data){
+		/* The nature of java's generic, operator overloading and Number type make it impossible to
+		 * make this function generic whilst still being reasonable. 
+		 */
+		Integer sum = 0;
+		
+		for(int i = 0; i < data.size(); i++){
+			sum += data.get(i);
+		}
+		
+		return sum;
+	}
+	
+	public static Integer sum_fe(List<Integer> data){
+		/* The nature of java's generic, operator overloading and Number type make it impossible to
+		 * make this function generic whilst still being reasonable. 
+		 */
+		Integer sum = 0;
+		
+		for(Integer i : data){
+			sum += i;
+		}
+		
+		return sum;
+	}
+	
+	public static Integer sum_r(List<Integer> data){
+		/* The nature of java's generic, operator overloading and Number type make it impossible to
+		 * make this function generic whilst still being reasonable. 
+		 */
+
+		return (data.size() == 1) ? data.get(0): data.get(0) + sum_r(data.subList(1, data.size()));
+		
+	}
+	
+	// runs a function on all items in a list
+	public static <T> void on_all(List<T> data, Consumer<T> f){
+		for(T t : data){
+			f.accept(t);
+		}
+	}
 }
