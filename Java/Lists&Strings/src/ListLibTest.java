@@ -94,4 +94,17 @@ public class ListLibTest {
 		List<Integer> data = Arrays.asList(-2, -1, 0, 1, 2, 3);
 		assertArrayEquals(new Integer[]{-2,0,2},ListLib.evenIndices_of(data).toArray());
 	}
+	
+	// Test for ListLib.isPalindrome
+	@Test
+	public void test_isPalindrome_true(){
+		List<Character> data = Arrays.asList('r','a','c','e','c','a','r');
+		assertTrue(ListLib.isPalindrome(data));
+	}
+	
+	@Test
+	public void test_isPalindrome_false(){
+		List<Character> data = Arrays.asList('a','v','a','c','a','r','d','o');
+		assertFalse(ListLib.isPalindrome(data));
+	}
 }

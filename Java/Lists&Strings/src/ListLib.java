@@ -21,6 +21,7 @@ public class ListLib {
 		return max;
 	}
 	
+	// Reverses an array.
 	public static <T> List<T> reverse(List<T> data){
 		
 		T tmp = null;
@@ -64,6 +65,26 @@ public class ListLib {
 		}
 		
 		return even;
+	}
+	
+	// List<T>.size()
+	
+	// Tests to see weather a list is a palindrome
+	public static <T extends Comparable<T>> boolean isPalindrome(List<T> data){
+		
+		int size = data.size();
+
+		for(int i = 0; i < Math.floor(size/2f); i++){
+			
+			T a = data.get(i);
+			T b = data.get(size - (i+1));
+			
+			if (!a.equals(b))
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 	
 }
