@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -216,5 +217,104 @@ public class ListLib {
 		data.addAll(tmp);
 		
 		return data;
+	}
+	
+	// generate fib numbers
+	public static List<Integer> gen_fib(int num){
+		
+		List<Integer> fib = new LinkedList<Integer>();
+		
+		// Have to hard code the first two fib numbers
+		fib.add(0);
+		fib.add(1);
+				
+		for(int i = 2; i < num; i++){
+			// the next fib number is the sum of the last two.
+			fib.add(fib.get(i-1) + fib.get(i-2));
+		}
+		
+		return fib;
+	}
+	
+	// takes a number and returns a list of its digits in base 10
+	public static List<Integer> digitise(int i){
+		List<Integer> digits = new LinkedList<Integer>();
+
+		int pow = 1;
+		
+		while (i > 0){
+			
+			int mask = (int)Math.pow(10, pow);
+			int a = i % mask;
+			i -= a;
+			
+			digits.add(a/(mask / 10));
+			pow++;
+		}
+		
+		return ListLib.reverse(digits);
+	}
+	
+	public static List<Integer> dig_add(List<Integer> a, List<Integer> b){
+		
+		int aSize = a.size(), bSize = b.size(), base = 10;
+		
+		List<Integer> sum = new LinkedList<Integer>();
+		
+		boolean carry = false;
+		
+		int i = 0;
+		for(i = Math.max(aSize, bSize) -1; i >= 0 ; i--){
+			
+			int tmp = (carry) ? 1 : 0;
+			
+			if (i < aSize){
+				tmp += a.get(i);
+			}
+			if (i < bSize){
+				tmp += b.get(i);
+			}
+			
+			carry = ( tmp > base );
+			sum.add( ((carry)?tmp-base:tmp));
+		}
+		
+		if (carry){
+			sum.add(1);
+		}
+		
+		return ListLib.reverse(sum);
+	}
+	
+	
+public static List<Integer> dig_sub(List<Integer> a, List<Integer> b){
+		
+		int aSize = a.size(), bSize = b.size(), base = 10;
+		
+		List<Integer> sum = new LinkedList<Integer>();
+		
+		boolean carry = false;
+		
+		int i = 0;
+		for(i = 0; i < Math.max(aSize, bSize) ; i++){
+			
+			int tmp = (carry) ? -1 : 0;
+			
+			if (i < aSize){
+				tmp += a.get(i);
+			}
+			if (i < bSize){
+				tmp -= b.get(i);
+			}
+			
+			carry = ( tmp < 0 );
+			sum.add( ((carry)?tmp+base:tmp));
+		}
+		
+		if (carry){
+			throw new ArithmeticException("Result was negitive");
+		}
+		
+		return sum;
 	}
 }

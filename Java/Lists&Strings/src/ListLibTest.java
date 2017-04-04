@@ -184,4 +184,43 @@ public class ListLibTest {
 		
 		assertArrayEquals(new Integer[]{0, 1, 2, 3, 5, 6, 7, 8}, ListLib.rotate(data,2).toArray());
 	}
+	
+	//Test gen_fib
+	@Test
+	public void gen_fib(){
+		List<Integer> fib = ListLib.gen_fib(10);
+		
+		assertArrayEquals(new Integer[]{0, 1, 1, 2, 3, 5, 8, 13, 21, 34}, fib.toArray());
+	}
+	
+	// Test digitise
+	@Test
+	public void test_digitise(){
+		assertArrayEquals(new Integer[]{5, 4, 3, 2, 1, 0}, ListLib.digitise(543210).toArray());
+	}
+	
+	// Test dig_add
+	@Test
+	public void test_dig_add(){
+		List<Integer> a = ListLib.digitise(4321);
+		List<Integer> b = ListLib.digitise(9123);
+
+		List<Integer> sum = ListLib.dig_add(a, b);
+		
+		assertArrayEquals(new Integer[]{1, 3, 4, 4, 4}, sum.toArray());
+
+	}
+	
+	// Test dig_sub
+	@Test
+	public void test_dig_sub(){
+		List<Integer> a = ListLib.digitise(5532);
+		List<Integer> b = ListLib.digitise(1631);
+
+		List<Integer> sub = ListLib.dig_sub(a, b);
+		for(Integer s : sub){System.out.println(s);}
+		
+		assertArrayEquals(new Integer[]{3, 9, 0, 1}, sub.toArray());
+
+	}
 }
