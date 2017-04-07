@@ -493,4 +493,68 @@ public class ListLib {
 		
 		return -1;
 	}
+	
+	public static void printWordBox( List<String> data){
+		
+		int max = 0;
+		for(String s : data){
+			max = (s.length()>max)?s.length():max;
+		}
+		
+		String line = "****";
+		for(int i = 0; i < max; i++)
+		{
+			line += "*";
+		}
+		
+		System.out.println(line);
+		
+		for(String s : data){
+			
+			String eol = "";
+			for(int i = 0; i < max - s.length(); i++)
+			{
+				eol += " ";
+			}
+			eol += " *";
+			
+			System.out.println("* " + s + eol);
+		}
+		
+		System.out.println(line);
+	}
+	
+	public static String EngToPig(String eng){
+		String[] words = eng.split(" ");
+		
+		for (int i = 0; i < words.length; i++){
+			char c = words[i].charAt(0);
+			words[i] = words[i].substring(1) + c + "ay";
+		}
+		
+		StringBuilder builder = new StringBuilder();
+		for(String s : words) {
+		    builder.append(s);
+		    builder.append(" ");
+		}
+		builder.setLength(builder.length()-1);
+		return builder.toString();
+	}
+	
+	public static String PigToEng(String pig){
+		String[] words = pig.split(" ");
+		
+		for (int i = 0; i < words.length; i++){
+			char c = words[i].charAt(words[i].length()-3);
+			words[i] = c + words[i].substring(0, words[i].length()-3);
+		}
+		
+		StringBuilder builder = new StringBuilder();
+		for(String s : words) {
+		    builder.append(s);
+		    builder.append(" ");
+		}
+		builder.setLength(builder.length()-1);
+		return builder.toString();
+	}
 }

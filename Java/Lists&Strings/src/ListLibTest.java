@@ -302,4 +302,26 @@ public class ListLibTest {
 
 		assertEquals(6,ListLib.search(a, 4));
 	}
+	
+	//Test PrintWordBox
+	@Test
+	public void test_PrintWordBox(){
+		List<String> a = Arrays.asList("Hello", "World","in","a","box");
+
+		ListLib.printWordBox(a);
+	}
+	
+	//Test EngToPig
+	@Test
+	public void test_EngToPig(){
+
+		assertEquals("hetay uickqay rownbay oxfay", ListLib.EngToPig("the quick brown fox"));
+	}
+	
+	//Test PigToEng
+	@Test
+	public void test_PigToEng(){
+
+		assertEquals("the quick brown fox", ListLib.PigToEng("hetay uickqay rownbay oxfay"));
+	}
 }
