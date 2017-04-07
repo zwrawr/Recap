@@ -468,4 +468,29 @@ public class ListLib {
 			sSort(data, i, j-t);
 		}
 	}
+	
+	public static <T extends Comparable<T>> int search(List<T> data, T val){
+		int left= 0, right = data.size();
+		
+		while (left <= right){
+			
+			int mid = left + (right - left)/2;
+			T t = data.get(mid);
+			
+			if (t.equals(val)){
+				return mid;
+			}
+			else if(t.compareTo(val)>0)
+			{
+				right = mid-1;
+			}
+			else if (t.compareTo(val)<0)
+			{
+				left = mid+1;
+			}
+
+		}
+		
+		return -1;
+	}
 }

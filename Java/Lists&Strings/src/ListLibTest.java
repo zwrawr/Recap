@@ -294,4 +294,12 @@ public class ListLibTest {
 
 		assertArrayEquals(new Integer[]{1, 1, 2, 2, 3, 3, 4, 8, 12, 23, 32, 34, 43, 45, 54, 675}, a.toArray());
 	}
+	
+	//Test BinarySearch
+	@Test
+	public void test_BinarySearch(){
+		List<Integer> a = Arrays.asList(1, 1, 2, 2, 3, 3, 4, 8, 12, 23, 32, 34, 43, 45, 54, 675);
+
+		assertEquals(6,ListLib.search(a, 4));
+	}
 }
