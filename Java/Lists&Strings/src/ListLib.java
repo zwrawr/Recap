@@ -348,4 +348,124 @@ public class ListLib {
 		return reverse(new ArrayList<Integer>(Arrays.asList(result)));
 	}
 	
+	public static <T extends Comparable<T>> void selectionSort(List<T> data){
+		int i, j, n = data.size();
+		
+		for(j = 0; j < n-1; j++){
+			int min = j;
+			
+			for (i = j+1; i < n; i++) {
+
+				if (data.get(i).compareTo(data.get(min)) < 0) {
+		            min = i;
+		        }
+		    }
+
+		    if(min != j) 
+		    {
+		        T tmp = data.get(j);
+		        data.set(j, data.get(min));
+		        data.set(min, tmp);
+		    }
+		}
+	}
+	
+	public static <T extends Comparable<T>> void insertionSort(List<T> data){
+		int i, j, n = data.size();
+		
+		for(i = 1; i < n; i++){
+			T x = data.get(i);
+			j = i - 1;
+			
+			while (j >= 0 && data.get(j).compareTo(x) > 0) {
+
+				data.set(j+1, data.get(j));
+				j--;
+		    }
+
+		    data.set(j+1, x);
+		}
+	}
+
+
+	public static <T extends Comparable<T>> List<T> mergeSort(List<T> data){
+
+		
+		int size = data.size();
+		
+		if (size <= 1){
+			return data;
+		}
+		
+		int midpoint = size/2;
+		
+		List<T> left = data.subList(0, midpoint);
+		List<T> right = data.subList(midpoint, size);
+		
+		left = mergeSort(left);
+		right = mergeSort(right);
+		
+		return merge(left,right);
+	}
+	
+	public static <T extends Comparable<T>> void quickSort(List<T> data){
+		qSort(data, 1, data.size()-1);
+	}
+	
+	private static <T extends Comparable<T>> void qSort(List<T> data, int lo, int hi){
+		if(lo < hi){
+			int p = partition(data, lo, hi);
+			qSort(data,lo,p);
+			qSort(data,p+1,hi);
+		}
+	}
+
+	private static <T extends Comparable<T>> int partition(List<T> data, int lo, int hi){
+		T piviot = data.get(lo);
+		int i = lo -1 ;
+		int j = hi + 1;
+		
+		while(true){
+			do{
+				i++;
+			}while(data.get(i).compareTo(piviot) < 0);
+			
+			do{
+				j--;
+			}while(data.get(j).compareTo(piviot) > 0);
+			
+			if(i >= j){
+				return j;
+			}
+			
+			T tmp = data.get(i);
+			data.set(i, data.get(j));
+			data.set(j, tmp);
+		}
+	}
+
+	public static <T extends Comparable<T>> void stoogeSort(List<T> data){
+		int i = 0;
+		int j = data.size()-1;
+		
+		sSort(data,i,j);
+	}
+
+	
+	// never heard of stooge sort. Its suuuper inefficient O(n^2.7~)
+	public static <T extends Comparable<T>> void sSort(List<T> data, int i, int j){
+
+		if (data.get(j).compareTo(data.get(i)) < 0){
+			T tmp = data.get(i);
+			data.set(i, data.get(j));
+			data.set(j, tmp);
+		}
+		
+		if (j - i + 1 > 2){
+			int t= (j - i + 1)/3;
+			sSort(data, i, j-t);
+			sSort(data, i+t, j);
+			sSort(data, i, j-t);
+		}
+	}
 }

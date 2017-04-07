@@ -232,16 +232,66 @@ public class ListLibTest {
 
 	}
 	
-	// Test dig_sub
+	// Test dig_mul
 	@Test
 	public void test_dig_mul(){
 		List<Integer> a = ListLib.digitise(1234);
 		List<Integer> b = ListLib.digitise(9876);
 
 		List<Integer> sub = ListLib.dig_mul(a, b);
-		for(Integer s : sub){System.out.println(s);}
 		
 		assertArrayEquals(new Integer[]{1, 2, 1, 8, 6, 9, 8, 4}, sub.toArray());
 
+	}
+	
+	//Test SelectionSort
+	@Test
+	public void test_SelectionSort(){
+		List<Integer> a = Arrays.asList(1, 8, 54, 3, 45, 2, 34, 3, 2, 32, 12, 675, 43, 23, 4, 1);
+		ListLib.selectionSort(a);
+		
+		assertArrayEquals(new Integer[]{1, 1, 2, 2, 3, 3, 4, 8, 12, 23, 32, 34, 43, 45, 54, 675}, a.toArray());
+	}
+	
+	//Test InsertionSort
+	@Test
+	public void test_InsertionSort(){
+		List<Integer> a = Arrays.asList(1, 8, 54, 3, 45, 2, 34, 3, 2, 32, 12, 675, 43, 23, 4, 1);
+		ListLib.insertionSort(a);
+		
+		assertArrayEquals(new Integer[]{1, 1, 2, 2, 3, 3, 4, 8, 12, 23, 32, 34, 43, 45, 54, 675}, a.toArray());
+	}
+	
+	//Test MergeSort
+	@Test
+	public void test_MergeSort(){
+		List<Integer> a = Arrays.asList(1, 8, 54, 3, 45, 2, 34, 3, 2, 32, 12, 675, 43, 23, 4, 1);
+		a = ListLib.mergeSort(a);
+		
+		for(Integer s : a){System.out.println(s);}
+
+		assertArrayEquals(new Integer[]{1, 1, 2, 2, 3, 3, 4, 8, 12, 23, 32, 34, 43, 45, 54, 675}, a.toArray());
+	}
+	
+	//Test QuickSort
+	@Test
+	public void test_QuickSort(){
+		List<Integer> a = Arrays.asList(1, 8, 54, 3, 45, 2, 34, 3, 2, 32, 12, 675, 43, 23, 4, 1);
+		ListLib.quickSort(a);
+		
+		for(Integer s : a){System.out.println(s);}
+
+		assertArrayEquals(new Integer[]{1, 1, 2, 2, 3, 3, 4, 8, 12, 23, 32, 34, 43, 45, 54, 675}, a.toArray());
+	}
+	
+	//Test StoogeSort
+	@Test
+	public void test_StoogeSort(){
+		List<Integer> a = Arrays.asList(1, 8, 54, 3, 45, 2, 34, 3, 2, 32, 12, 675, 43, 23, 4, 1);
+		ListLib.stoogeSort(a);
+		
+		for(Integer s : a){System.out.println(s);}
+
+		assertArrayEquals(new Integer[]{1, 1, 2, 2, 3, 3, 4, 8, 12, 23, 32, 34, 43, 45, 54, 675}, a.toArray());
 	}
 }
