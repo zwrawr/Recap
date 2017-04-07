@@ -223,4 +223,13 @@ public class ListLibTest {
 		assertArrayEquals(new Integer[]{3, 9, 0, 1}, sub.toArray());
 
 	}
+	
+	@Test(expected = ArithmeticException.class)
+	public void test_dig_sub_neg(){
+		List<Integer> a = ListLib.digitise(100);
+		List<Integer> b = ListLib.digitise(101);
+
+		ListLib.dig_sub(a, b);		
+
+	}
 }

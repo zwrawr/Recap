@@ -287,7 +287,7 @@ public class ListLib {
 	}
 	
 	
-public static List<Integer> dig_sub(List<Integer> a, List<Integer> b){
+	public static List<Integer> dig_sub(List<Integer> a, List<Integer> b){
 		
 		int aSize = a.size(), bSize = b.size(), base = 10;
 		
@@ -296,7 +296,7 @@ public static List<Integer> dig_sub(List<Integer> a, List<Integer> b){
 		boolean carry = false;
 		
 		int i = 0;
-		for(i = 0; i < Math.max(aSize, bSize) ; i++){
+		for(i = Math.max(aSize, bSize) -1; i >= 0 ; i--){
 			
 			int tmp = (carry) ? -1 : 0;
 			
@@ -315,6 +315,6 @@ public static List<Integer> dig_sub(List<Integer> a, List<Integer> b){
 			throw new ArithmeticException("Result was negitive");
 		}
 		
-		return sum;
+		return ListLib.reverse(sum);
 	}
 }
