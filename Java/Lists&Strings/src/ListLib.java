@@ -1,10 +1,10 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 
 public class ListLib {
-	
 	
 	
 	// Returns the maximum value from a List
@@ -317,4 +317,35 @@ public class ListLib {
 		
 		return ListLib.reverse(sum);
 	}
+	
+	public static List<Integer> dig_mul(List<Integer> num1, List<Integer> num2){
+	
+		List<Integer> a = reverse(num1);
+		List<Integer> b = reverse(num2);
+
+		
+		Integer[] result = new Integer[a.size() + b.size()];
+		
+		for (int r = 0; r < b.size(); r++) {
+			int rDig = b.get(r);
+			int tmp = 0;
+			for (int l = 0; l < a.size(); l++) {
+				tmp += (result[l+r] != null)?result[l+r]:0;
+				tmp += rDig * a.get(l);
+				result[l+r] = tmp % 10;
+				tmp /= 10;
+			}
+			
+			int dest = r + a.size();
+			while(tmp !=0){
+				tmp += (result[dest]!=null)?result[dest]:0;
+				result[dest] = tmp % 10;
+				tmp /= 10;
+				dest++;
+			}
+		}
+		
+		return reverse(new ArrayList<Integer>(Arrays.asList(result)));
+	}
+	
 }

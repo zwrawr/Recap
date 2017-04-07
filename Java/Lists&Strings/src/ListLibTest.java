@@ -218,7 +218,6 @@ public class ListLibTest {
 		List<Integer> b = ListLib.digitise(1631);
 
 		List<Integer> sub = ListLib.dig_sub(a, b);
-		for(Integer s : sub){System.out.println(s);}
 		
 		assertArrayEquals(new Integer[]{3, 9, 0, 1}, sub.toArray());
 
@@ -230,6 +229,19 @@ public class ListLibTest {
 		List<Integer> b = ListLib.digitise(101);
 
 		ListLib.dig_sub(a, b);		
+
+	}
+	
+	// Test dig_sub
+	@Test
+	public void test_dig_mul(){
+		List<Integer> a = ListLib.digitise(1234);
+		List<Integer> b = ListLib.digitise(9876);
+
+		List<Integer> sub = ListLib.dig_mul(a, b);
+		for(Integer s : sub){System.out.println(s);}
+		
+		assertArrayEquals(new Integer[]{1, 2, 1, 8, 6, 9, 8, 4}, sub.toArray());
 
 	}
 }
