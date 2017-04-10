@@ -47,7 +47,7 @@ I'm using a list of problems from https://adriann.github.io/programming_problems
 **ID**|**Task**|**Java**|**C#**|**python**
 :-----:|:-----|:-----:|:-----:|:-----:
 01| adds up to ten | | | 
-02| Exo planet leap years | | |
+02| Exo planet leap years | partial | |
 03| implement a data structure for graphs | | |
 04| DOT representation of a graphs | | |
 05| Morse code to english converter | | |
