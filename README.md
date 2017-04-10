@@ -46,7 +46,7 @@ I'm using a list of problems from https://adriann.github.io/programming_problems
 ## Intermediate
 **ID**|**Task**|**Java**|**C#**|**python**
 :-----:|:-----|:-----:|:-----:|:-----:
-01| adds up to ten | | | 
+01| adds up to one hundred | :white_check_mark: | | 
 02| Exo planet leap years | | |
 03| implement a data structure for graphs | | |
 04| DOT representation of a graphs | | |
