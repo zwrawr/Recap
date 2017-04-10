@@ -1,8 +1,10 @@
 
 public class AutoAdder {
 
-	private static int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9};
-	private static int target = 100;
+	private Integer[] numbers;
+	private int target;
+	private op[] pattern;
+	private int result;
 	
 	private enum op{
 		ADD,
@@ -11,46 +13,139 @@ public class AutoAdder {
 	}
 	
 	public static void main(String[] args) {
-		TestPattern(new op[]{op.ADD,op.SUB,op.CONCAT,op.SUB,op.ADD,op.ADD,op.SUB,op.CONCAT}, numbers, target);
-	}
-	
-	private static boolean TestPattern(op[] ops, int[] nums, int tar){
 		
-		// make sure the inputs make sense
-		if((ops.length+1) != nums.length){
-			throw new IllegalArgumentException("Wrong input lengths");
+		AutoAdder AA = new AutoAdder();
+		while(AA.incrementPattern()) {
+			
+			if (AA.TestPattern())
+			{
+				System.out.print(AA);
+			}
+	
 		}
 		
+	}
+	
+	public AutoAdder(){
+		numbers = new Integer[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9};
+		target = 100;
+		pattern = null;
+	}
+	
+	public boolean incrementPattern(){
+				
+		if (pattern == null){
+			// this is the first pattern so we need to generate it
+			
+			pattern = new op[numbers.length-1];
+
+			for (int i = 0; i < pattern.length; i++) {
+				pattern[i] = op.ADD;
+			}
+			return true;
+		}
+		else
+		{
+			// need to increment the pattern, basically a base 3 increment
+			for (int i = 0; i < pattern.length; i++) {
+				boolean carry = false;
+
+				switch(pattern[i])
+				{
+					case ADD:
+						pattern[i] = op.SUB;
+						break;
+					case SUB:
+						pattern[i] = op.CONCAT;
+						break;
+					case CONCAT:
+						pattern[i] = op.ADD;
+						carry = true;
+						break;	
+				}
+				
+				// If we don't need to change the next number we can exit early
+				if (!carry){
+					return true;
+				}
+			}
+			
+			// We've done every pattern
+			return false;
+		}
+		
+	}
+	
+	private boolean TestPattern(){
+		
+		Integer[] scratch = numbers.clone();
+		
 		// apply any concats first
-		for(int i = nums.length -1; i > 0; i--){
-			if(ops[i-1] == op.CONCAT){
-				nums[i-1] *= 10;
-				nums[i-1] += nums[i];
-				nums[i] = 0;
+		for(int i = 0; i < numbers.length-1; i++){
+			if(pattern[i] == op.CONCAT){
+				scratch[i] *= 10;
+				scratch[i+1] += scratch[i];
+				scratch[i] = 0;
 			}
 		}
 		
-		// do additions and subtractions
-		int result = nums[0];
-		for (int i = 1; i < nums.length; i++){
+		// Find the first item
+		result = 0;
+		int i = -1;
+		while (result == 0){
+			i++;
+			result = scratch[i];
+		}
+		
+		// Apply the operations to the values in the scratch pad
+		for (i++; i < scratch.length; i++){
+
+			// skip any empty elements
 			
-			op curr = ops[i-1];
-			switch(curr){
+			switch(pattern[i-1]){
 			case ADD:
-				result += nums[i];
+				while(scratch[i] == 0){i++;}
+				result += scratch[i];
 				break;
 			case SUB:
-				result -= nums[i];
+				while(scratch[i] == 0){i++;}
+				result -= scratch[i];
 				break;
 			case CONCAT:
 				break;
 			}
 			
-			System.out.println(result);
 		}
 		
 		// check result
-		return (result == tar);
+		return (result == target);
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		
+		s.append(numbers[0]);
+		
+		for (int i = 1; i < numbers.length; i++) {
+			
+			switch(pattern[i-1]){
+				case ADD:
+					s.append(" + ");
+					break;
+				case SUB:
+					s.append(" - ");
+					break;
+				case CONCAT:
+					break;
+			}
+			s.append(numbers[i]);
+		}
+		
+		s.append(" = " + result + "\n");
+		
+		return s.toString();
+	}
+	
+	
 }
