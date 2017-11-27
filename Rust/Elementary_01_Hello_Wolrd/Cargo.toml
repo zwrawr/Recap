@@ -1,0 +1,6 @@
+[package]
+name = "Elementary_01_Hello_Wolrd"
+version = "0.1.0"
+authors = ["Zak West <zwrawr@gmail.com>"]
+
+[dependencies]
