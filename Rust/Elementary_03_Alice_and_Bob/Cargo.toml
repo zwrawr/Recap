@@ -1,0 +1,6 @@
+[package]
+name = "Elementary_03_Alice_and_Bob"
+version = "0.1.0"
+authors = ["Zak West <zwrawr@gmail.com>"]
+
+[dependencies]
