@@ -9,7 +9,7 @@ I'm using a list of problems from https://adriann.github.io/programming_problems
 :-----:|:-----|:-----:|:-----:|:-----:|:-----:
 1| a program that prints ‘Hello World’ to the screen | :white_check_mark: | | | :white_check_mark: 
 2| program that asks the user for their name and greets them | :white_check_mark: | | | :white_check_mark: 
-3| Modify the program,only Alice and Bob should be greeted | :white_check_mark: | | |
+3| Modify the program,only Alice and Bob should be greeted | :white_check_mark: | | | :white_check_mark: 
 4| prints the sum of the numbers 1 to n | :white_check_mark: | | |
 5| Modify the program so that only multiples of 3 or 5 are considered in the sum| :white_check_mark: | | |
 6| choose between computing the sum and computing the product of 1,…,n | :white_check_mark: | | |
