@@ -1,0 +1,6 @@
+[package]
+name = "Elementary_07_times_tables"
+version = "0.1.0"
+authors = ["Zak West <zwrawr@gmail.com>"]
+
+[dependencies]

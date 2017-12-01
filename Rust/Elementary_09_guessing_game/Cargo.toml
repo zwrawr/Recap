@@ -1,0 +1,7 @@
+[package]
+name = "Elementary_09_guessing_game"
+version = "0.1.0"
+authors = ["Zak West <zwrawr@gmail.com>"]
+
+[dependencies]
+rand = "*"

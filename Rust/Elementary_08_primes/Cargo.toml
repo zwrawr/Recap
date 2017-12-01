@@ -1,0 +1,9 @@
+[package]
+name = "Elementary_08_primes"
+version = "0.1.0"
+authors = ["Zak West <zwrawr@gmail.com>"]
+
+[dependencies]
+num-bigint = "0.1.40"
+num-traits = "0.1.40"
+num-integer = "0.1.35"
