@@ -16,7 +16,7 @@ I'm using a list of problems from https://adriann.github.io/programming_problems
 7| multiplication table for numbers up to 12 | :white_check_mark: | | | :white_check_mark:
 8| prints all prime numbers | partial | | | :white_check_mark:
 9| Write a guessing game where the user has to guess a secret number | :white_check_mark: | | | :white_check_mark: 
-10| Write a program that prints the next 20 leap years | :white_check_mark: | | |
+10| Write a program that prints the next 20 leap years | :white_check_mark: | | | :white_check_mark:
 11| Maths ... ?| . . . | | |
 
 ## Lists & Strings
