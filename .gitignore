@@ -1,0 +1,43 @@
+**/*.log
+
+#========#
+# VSCode #
+#========#
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+#==========#
+# IntelliJ #
+#==========#
+**/.idea/
+**/.project
+
+# Local History for Visual Studio Code
+.history/
+
+#======#
+# Java #
+#======#
+
+# Compiled
+**/*.class
+**/*.jar
+
+
+#======#
+# Rust #
+#======#
+
+# Cargo
+**/target/
+**/debug/
+
+**/Cargo.lock
+
+#backups from rustfmt
+**/*.rs.bk
+
