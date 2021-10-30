@@ -23,7 +23,7 @@ def traverse(data, x, y, trees, dx,dy):
 
 if __name__ == "__main__":
 
-	data = getdata('../map.txt')
+	data = getdata('map.txt')
 
 	res = traverse(data, 0, 0, 0, 1, 3)
 	print(str(res) + " trees on the route, part 1")

@@ -37,7 +37,7 @@ def countValid(data, f):
 
 if __name__ == "__main__":
 
-	data = getdata('../passwords.txt')
+	data = getdata('passwords.txt')
 
 	res = countValid(data, isValid_range)
 	print(str(res) + " passwords are valid for part one using the range policy")

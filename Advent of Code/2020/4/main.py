@@ -103,7 +103,7 @@ def checkPassports(data):
 
 if __name__ == "__main__":
 
-	data = getdata('../passports.txt')
+	data = getdata('passports.txt')
 
 	valid = checkPassports(data)
 

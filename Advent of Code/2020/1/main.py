@@ -19,7 +19,7 @@ def find3(data,sum):
 if __name__ == "__main__":
 	
 	data = []
-	with open('../inputs.csv') as my_file:
+	with open('inputs.csv') as my_file:
 		for line in my_file:
 			data.append(int(line))
 	

@@ -63,7 +63,7 @@ def getMissingNum(data):
 
 if __name__ == "__main__":
 
-	data = getdata('../boardingpasses.txt')
+	data = getdata('boardingpasses.txt')
 
 	(sum, min, missing ,max) = getMissingNum(data)
 
