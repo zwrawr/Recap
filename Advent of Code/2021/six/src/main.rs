@@ -5,18 +5,6 @@ use std::path::Path;
 const INPUT: &str = "./input.txt";
 const TEST: &str = "./test.txt";
 
-#[derive(Eq)]
-struct Fish {
-    number: u32,
-    clock : u32
-}
-
-impl PartialEq for Fish {
-    fn eq(&self, other: &Self) -> bool {
-        self.number == other.number &&
-        self.clock == other.clock 
-    }
-}
 
 fn main() {
     
@@ -66,6 +54,7 @@ fn get_data(filename: &str) -> Vec<u64> {
 
     if let Ok(lines) = read_lines(filename) {
         for line in lines {
+            println!("{:?}",line);
             if let Ok(l) = line {
                 println!("{}",l);
                 return l.split(',').collect::<Vec<&str>>().iter().map(|x| x.parse::<u64>().unwrap()).collect::<Vec<u64>>();
